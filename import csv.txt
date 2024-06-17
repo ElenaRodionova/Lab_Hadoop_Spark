@@ -1,0 +1,9 @@
+hdfs dfs -mkdir /user/input
+
+hdfs dfs -put /workspaces/Lab_Hadoop_Spark/data/customer_shopping_data.csv /user/input
+    
+hdfs dfs -D dfs.block.size=64M -put /workspaces/Lab_Hadoop_Spark/data/customer_shopping_data.csv /user/input
+   
+yarn jar <Your_JAR_file> <Main_Class> -D mapreduce.map.memory.mb=1024 -D mapreduce.reduce.memory.mb=2048 input_path output_path
+    
+    
