@@ -59,9 +59,9 @@ evaluator = RegressionEvaluator(labelCol="price", predictionCol="prediction", me
 r2 = evaluator.evaluate(predictions, {evaluator.metricName: "r2"})
 mae = evaluator.evaluate(predictions, {evaluator.metricName: "mae"})
 rmse = evaluator.evaluate(predictions)
-print(f"Коэффициент детерминации (R2) в тестовых данных: {r2}")
-print(f"Средняя абсолютная ошибка (MAE) в тестовых данных: {mae}")
-print(f"Среднеквадратичная ошибка (RMSE) в тестовых данных: {rmse}")
+print("Коэффициент детерминации (R2) в тестовых данных:" r2)
+print("Средняя абсолютная ошибка (MAE) в тестовых данных:" mae)
+print("Среднеквадратичная ошибка (RMSE) в тестовых данных:" rmse)
 
 time_res = time.time() - time_start
 RAM_res = psutil.Process(os.getpid()).memory_info().rss / (float(1024)**2)
