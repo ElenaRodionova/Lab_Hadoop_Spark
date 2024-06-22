@@ -11,7 +11,7 @@ docker cp data/data.csv namenode:/ #загрузить данные
 
 docker exec -it namenode bash
 
-hdfs dfs -D dfs.block.size=32M -put /customer_shopping_data.csv /
+hdfs dfs -D dfs.block.size=16M -put /customer_shopping_data.csv /
 
 hdfs dfs -D dfs.block.size=32M -put /data.csv /
    

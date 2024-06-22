@@ -37,7 +37,6 @@ fi
 
 
 docker cp .data/data.csv namenode:/
-docker cp .data/customer_shopping_data.csv namenode:/ 
 docker cp ./HDFS.sh namenode:/ 
 docker exec -it namenode bash HDFS.sh 
 

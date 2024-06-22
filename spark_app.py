@@ -32,7 +32,7 @@ for col in ['gender', 'category', 'payment_method', 'shopping_mall']:
     indexer = StringIndexer(inputCol=col, outputCol="{}_index".format(col))
     data = indexer.fit(data).transform(data)
     data = data.drop(col) 
-    data = data.withColumnRenamed(f"{col}_index",col) 
+    data = data.withColumnRenamed("{}_index".format(col)) 
 
 one_hot_encoder = OneHotEncoder(inputCol='gender', outputCol='gender_one_hot') 
 one_hot_encoder = one_hot_encoder.fit(data) 
