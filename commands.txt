@@ -1,0 +1,43 @@
+Запуск контейнеров:
+docker-compose up
+docker-compose -f docker-compose-v3.yml up
+
+
+docker ps
+
+docker cp data/customer_shopping_data.csv namenode:/ #загрузить данные
+
+docker cp data/data.csv namenode:/ #загрузить данные  
+
+docker volume inspect hadoop
+
+docker exec -it namenode bash
+
+hdfs dfs -D dfs.block.size=32M -put /customer_shopping_data.csv /
+
+hdfs dfs -D dfs.block.size=32M -put /data.csv /
+   
+hdfs dfsadmin -setSpaceQuota 10g / #ограничение на используемую память
+
+hdfs dfsadmin -report
+
+hdfs dfsadmin -safemode get
+
+hdfs dfsadmin -safemode leave
+
+docker cp spark-master:/log.txt ./logs/log_DataNodes_1_opt_False.txt
+docker cp spark-master:/log.txt ./logs/log_DataNodes_1_opt_True.txt
+docker cp spark-master:/log.txt ./logs/log_DataNodes_3_opt_False.txt
+docker cp spark-master:/log.txt ./logs/log_DataNodes_3_opt_True.txt
+
+exit
+
+Отключение docker-compose
+docker-compose down
+
+Ссылки для Hadoop и Spark:
+http://localhost:9870
+http://localhost:9870/explorer.html#/
+http://localhost:8080/
+http://localhost:8081/
+http://localhost:4040/jobs/
