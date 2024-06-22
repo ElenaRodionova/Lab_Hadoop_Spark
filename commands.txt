@@ -9,8 +9,6 @@ docker cp data/customer_shopping_data.csv namenode:/ #загрузить дан�
 
 docker cp data/data.csv namenode:/ #загрузить данные  
 
-docker volume inspect hadoop
-
 docker exec -it namenode bash
 
 hdfs dfs -D dfs.block.size=32M -put /customer_shopping_data.csv /
