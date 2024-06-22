@@ -29,7 +29,7 @@ if OPTIMIZED:
 data = data.withColumn("invoice_date", (unix_timestamp("invoice_date", format='dd/MM/yyyy HH:mm') / 86400).cast(FloatType())) 
 
 for col in ['gender', 'category', 'payment_method', 'shopping_mall']:
-    indexer = StringIndexer(inputCol=col, outputCol=f"{col}_index") 
+    indexer = StringIndexer(inputCol=col, outputCol="{}_index".format(col))
     data = indexer.fit(data).transform(data)
     data = data.drop(col) 
     data = data.withColumnRenamed(f"{col}_index",col) 
