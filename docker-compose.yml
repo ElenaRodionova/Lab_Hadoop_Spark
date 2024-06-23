@@ -6,8 +6,6 @@ services:
     restart: always 
     ports: 
       - 9870:9870 
-    volumes: 
-      - hadoop:/hadoop/dfs/name 
     environment:
       - CLUSTER_NAME=main_namenode
     env_file: 
@@ -17,8 +15,6 @@ services:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8 
     container_name: datanode_1 
     restart: always 
-    volumes: 
-      - hadoop:/hadoop/dfs/data_1 
     environment: 
       - SERVICE_PRECONDITION=namenode:9870 
     env_file: 
@@ -50,6 +46,3 @@ services:
       - "SPARK_MASTER=spark://spark-master:7077" 
     env_file: 
       - ./hadoop.env 
-  
-volumes:
-  hadoop: 

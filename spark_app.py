@@ -31,7 +31,7 @@ if OPTIMIZED:
     data.persist()
     data = data.repartition(4)
 
-data = data.withColumn("invoice_date", (unix_timestamp("invoice_date", format='dd/MM/yyyy HH:mm') / 86400).cast(FloatType()))
+data = data.withColumn("invoice_date", (unix_timestamp("invoice_date", format='yyyy-MM-dd') / 86400).cast(FloatType()))
 
 for col in ['gender', 'category', 'payment_method', 'shopping_mall']:
     indexer = StringIndexer(inputCol=col, outputCol="{}_index".format(col))
@@ -62,9 +62,9 @@ evaluator = RegressionEvaluator(labelCol="price", predictionCol="prediction", me
 r2 = evaluator.evaluate(predictions, {evaluator.metricName: "r2"})
 mae = evaluator.evaluate(predictions, {evaluator.metricName: "mae"})
 rmse = evaluator.evaluate(predictions)
-print('Коэффициент детерминации (R2) в тестовых данных:', r2)
-print('Средняя абсолютная ошибка (MAE) в тестовых данных:', mae)
-print('Среднеквадратичная ошибка (RMSE) в тестовых данных:', rmse)
+print('Coefficient of determination (R2) in the test data:', r2)
+print('Average absolute error (MAE) in the test data:', mae)
+print('Standard error (RMSE) in the test data:', rmse)
 
 
 time_res = time.time() - time_start
