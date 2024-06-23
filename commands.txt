@@ -23,15 +23,26 @@ hdfs dfsadmin -safemode get
 
 hdfs dfsadmin -safemode leave
 
+exit
+
 docker cp ./spark_app.py spark-master:/
 docker cp ./Spark.sh spark-master:/ 
 
-docker cp spark-master:/log.txt ./logs/log_DataNodes_1_opt_False.txt 
+docker exec -it spark-master bash Spark.sh False
 
-docker cp spark-master:/log.txt ./logs/log_DataNodes_1_opt_False.txt
-docker cp spark-master:/log.txt ./logs/log_DataNodes_1_opt_True.txt
-docker cp spark-master:/log.txt ./logs/log_DataNodes_3_opt_False.txt
-docker cp spark-master:/log.txt ./logs/log_DataNodes_3_opt_True.txt
+docker cp spark-master:/log.txt ./logs/DataNodes_1_opt_False.txt
+
+docker exec -it spark-master bash Spark.sh True
+
+docker cp spark-master:/log.txt ./logs/DataNodes_1_opt_True.txt
+
+docker exec -it spark-master bash Spark.sh False
+
+docker cp spark-master:/log.txt ./logs/DataNodes_3_opt_False.txt
+
+docker exec -it spark-master bash Spark.sh True
+
+docker cp spark-master:/log.txt ./logs/DataNodes_3_opt_True.txt
 
 exit
 
