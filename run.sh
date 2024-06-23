@@ -1,6 +1,6 @@
 #!/bin/bash
 
-N=15 # число запусков для статистики
+N=10 # число запусков для статистики
 DATANODES_COUNT=1 # количество рассматриваемых DataNode  
 OPTIMIZED=False # флаг, запускать ли оптимизированный Spark
 
@@ -36,7 +36,7 @@ else
 fi
 
 
-docker cp .data/data.csv namenode:/
+docker cp ./data/data.csv namenode:/
 docker cp ./HDFS.sh namenode:/ 
 docker exec -it namenode bash HDFS.sh 
 

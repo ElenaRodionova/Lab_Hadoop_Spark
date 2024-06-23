@@ -7,6 +7,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import unix_timestamp
 from pyspark.sql.functions import lit
 from pyspark.sql.types import IntegerType
+from pyspark.sql.types import FloatType
 from pyspark.ml.feature import StringIndexer, OneHotEncoder
 from pyspark.ml import Pipeline
 from pyspark.sql.functions import count, when, isnull,col
@@ -21,6 +22,7 @@ SparkContext.getOrCreate(SparkConf().setMaster('spark://spark-master:7077')).set
 spark = SparkSession.builder.master("spark://spark-master:7077").appName("practice").getOrCreate() 
 
 data = spark.read.format("csv").option("header", "true").option('inferSchema', 'true').load("hdfs://namenode:9000/data.csv") 
+
 if OPTIMIZED:
     data.cache()
     data.persist()
@@ -59,6 +61,10 @@ evaluator = RegressionEvaluator(labelCol="price", predictionCol="prediction", me
 r2 = evaluator.evaluate(predictions, {evaluator.metricName: "r2"})
 mae = evaluator.evaluate(predictions, {evaluator.metricName: "mae"})
 rmse = evaluator.evaluate(predictions)
+
+print('Коэффициент детерминации (R2) в тестовых данных:', r2)
+print('Средняя абсолютная ошибка (MAE) в тестовых данных:', mae)
+print('Среднеквадратичная ошибка (RMSE) в тестовых данных:', rmse)
 
 time_res = time.time() - time_start
 RAM_res = psutil.Process(os.getpid()).memory_info().rss / (float(1024)**2)
