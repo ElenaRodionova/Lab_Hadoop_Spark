@@ -1,5 +1,5 @@
 #!/bin/bash
 
-hdfs dfs -D dfs.block.size=32M -put /data.csv / # отправляем данные с NameNode в hdfs
-hdfs dfsadmin -setSpaceQuota 10g / #ограничение на используемую память
-exit # выходим из вложенного терминала Hadoop
+hdfs dfs -D dfs.block.size=32M -put /data.csv / 
+hdfs dfsadmin -setSpaceQuota 10g / 
+exit

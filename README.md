@@ -36,3 +36,13 @@
 
 
 Датасет взят с https://www.kaggle.com/datasets/mehmettahiraslan/customer-shopping-dataset
+
+Быстрый запуск тестов:
+
+    - bash run.sh --datanodes 1 --optimized False  # 1 DataNode без оптимизации
+
+    - bash run.sh --datanodes 3 --optimized False # 3 DataNode без оптимизации
+
+    - bash run.sh --datanodes 1 --optimized True # 1 DataNode с оптимизацией
+
+    - bash run.sh --datanodes 3 --optimized True # 3 DataNode с оптимизацией

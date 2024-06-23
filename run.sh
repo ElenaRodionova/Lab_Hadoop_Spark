@@ -1,8 +1,8 @@
 #!/bin/bash
 
-N=30 # число запусков для статистики
-DATANODES_COUNT=1 # количество рассматриваемых DataNode  
-OPTIMIZED=False # флаг, запускать ли оптимизированный Spark
+N=30 
+DATANODES_COUNT=1 
+OPTIMIZED=False
 
 
 while [[ $# -gt 0 ]]
