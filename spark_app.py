@@ -6,7 +6,7 @@ import os
 import psutil
 import time
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import unix_timestamp
+from pyspark.sql.functions import unix_timestamp, col
 from pyspark.sql.functions import lit
 from pyspark.sql.types import IntegerType
 from pyspark.sql.types import FloatType
@@ -24,6 +24,7 @@ time_start = time.time()
 SparkContext.getOrCreate(SparkConf().setMaster('spark://spark-master:7077')).setLogLevel("INFO")
 spark = SparkSession.builder.master("spark://spark-master:7077").appName("practice").getOrCreate() 
 
+print('Соединение выполнено')
 data = spark.read.format("csv").option("header", "true").option('inferSchema', 'true').load("hdfs://namenode:9000/data.csv") 
 
 if OPTIMIZED:

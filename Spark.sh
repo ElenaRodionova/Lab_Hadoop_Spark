@@ -6,6 +6,6 @@ apk add linux-headers
 pip install numpy psutil
 for ((i=1; i<=10; i++)) 
 do 
-    /spark/bin/spark-submit spark_app.py $1 
+    /spark/bin/spark-submit /spark_app.py $1 
 done 
 exit 
