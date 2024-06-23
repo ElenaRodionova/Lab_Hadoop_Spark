@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import numpy as np
 import sys
 import os
@@ -9,6 +11,7 @@ from pyspark.sql.functions import lit
 from pyspark.sql.types import IntegerType
 from pyspark.sql.types import FloatType
 from pyspark.ml.feature import StringIndexer, OneHotEncoder
+from pyspark import SparkContext, SparkConf
 from pyspark.ml import Pipeline
 from pyspark.sql.functions import count, when, isnull,col
 from pyspark.ml.feature import VectorAssembler
