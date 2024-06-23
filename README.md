@@ -46,3 +46,8 @@
     - bash run.sh --datanodes 1 --optimized True # 1 DataNode с оптимизацией
 
     - bash run.sh --datanodes 3 --optimized True # 3 DataNode с оптимизацией
+
+Результат в графиках:
+![Histograms](/result.png)
+
+
