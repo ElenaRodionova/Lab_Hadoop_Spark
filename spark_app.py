@@ -62,6 +62,7 @@ r2 = evaluator.evaluate(predictions, {evaluator.metricName: "r2"})
 mae = evaluator.evaluate(predictions, {evaluator.metricName: "mae"})
 rmse = evaluator.evaluate(predictions)
 
+print('Успешно')
 print('Коэффициент детерминации (R2) в тестовых данных:', r2)
 print('Средняя абсолютная ошибка (MAE) в тестовых данных:', mae)
 print('Среднеквадратичная ошибка (RMSE) в тестовых данных:', rmse)
